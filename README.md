@@ -18,19 +18,54 @@ Double) and PPO across two Gymnasium environments.
 
 ## Headline findings
 
-- **Dueling Double DQN wins reliably on Pong.** Across three seeds
-  (42, 0, 7), the 95% bootstrap CI of best-train return is
-  [4.6, 6.8] — tight and strictly positive — while Vanilla DQN
-  ([-13.0, +9.7]) and Double DQN ([-5.6, +8.2]) both cross zero
-  at this budget.
-- **Hyperparameter dominates algorithm.** A factor-of-10 LR change
-  moves the LunarLander score by more than the entire
-  Vanilla → Double DQN improvement, consistent with the wider deep-RL
-  reproducibility literature.
-- **DQN's off-policy advantage holds across tasks.** On Pong at 1 M
-  steps, PPO is essentially at random (best 100-ep MA ≈ -19.9) while
-  Double / Dueling DQN have crossed zero. PPO needs roughly an order
-  of magnitude more env-steps to be competitive on Atari.
+### RQ2 — On-policy without replay buffer is sample-inefficient by an order of magnitude on Atari
+
+![PPO vs DQN on Pong at a matched 1M-step budget](assets/pong_dqn_vs_ppo.png)
+
+At a matched 1 M env-step budget, PPO is essentially still at random
+play on Pong (best 100-ep moving-average return $\approx -19.9$;
+final 10-ep eval $-20.7 \pm 0.6$), whereas Double and Dueling DQN
+have already crossed zero. PPO Atari needs $\gtrsim 5\times 10^{6}$
+timesteps to converge with this configuration.
+
+### RQ1 — Vanilla DQN's overestimation is visible in the Q-value curve
+
+![Mean predicted Q during training](assets/pong_qmean.png)
+
+Vanilla DQN's batch-average $\overline{Q}$ climbs noticeably higher
+than Double and Dueling Double DQN, exactly the over-estimation bias
+predicted by Thrun & Schwartz (1993) — Double DQN's decoupled
+action-selection / action-evaluation suppresses it.
+
+### RQ3 — Hyperparameter dominates algorithm
+
+![Learning-rate sensitivity on LunarLander Double DQN](assets/lander_lr_ablation.png)
+
+A factor-of-10 LR change on LunarLander moves the final score by more
+than the entire Vanilla → Double DQN improvement. Algorithmic
+comparison without hyperparameter control is unreliable, consistent
+with the wider deep-RL reproducibility literature.
+
+### Bonus — DQN handily solves LunarLander; PPO climbs slowly within the same budget
+
+![LunarLander training curves](assets/lander_learning.png)
+
+Both DQN variants (Double / Dueling Double) cross the `+200` "solved"
+threshold within $\sim 200$ K env-steps; PPO is still climbing past
+zero at its $250$ K-step snapshot. The replay buffer's per-transition
+reuse is the obvious contributor.
+
+### Multi-seed robustness (Pong, 3 seeds; best 100-ep MA)
+
+| Variant            | Mean | 95 % bootstrap CI  |
+| ------------------ | ---: | ------------------ |
+| Vanilla DQN        | −3.5 | [−13.0, +9.7]      |
+| Double DQN         |  3.0 | [−5.6, +8.2]       |
+| Dueling Double DQN |  5.6 | **[+4.6, +6.8]**   |
+
+Only Dueling Double DQN's CI is strictly positive at this budget —
+Vanilla and Double straddle zero. Dueling's empirical win on Pong is
+therefore *both reproducibility and mean score*.
 
 ## Layout
 
