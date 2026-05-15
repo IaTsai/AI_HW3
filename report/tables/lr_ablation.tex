@@ -1,0 +1,13 @@
+\begin{table}[h]\centering\small
+\caption{LunarLander DQN (Double): learning-rate sensitivity. All other hyperparameters held fixed; same seed.}
+\label{tab:lr_ablation}
+\begin{tabular}{lrrrr}
+\toprule
+Learning rate & Final eval mean & Std & Best train (100-ep MA) & $n$ \\
+\midrule
+$1\times 10^{-3}$ & 211.29 & 97.50 & 252.51 & 100 \\
+$3\times 10^{-4}$ (default) & 174.14 & 131.70 & 253.95 & 100 \\
+$1\times 10^{-4}$ & 2.60 & 21.28 & 16.49 & 100 \\
+\bottomrule
+\end{tabular}
+\end{table}

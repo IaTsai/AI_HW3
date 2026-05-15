@@ -1,0 +1,18 @@
+\begin{table}[h]\centering\footnotesize
+\caption{Multi-seed summary across both tasks. Pong: 3 seeds (42, 0, 7); seed~42 ran 2\,M steps, seeds 0 and 7 ran 1.5\,M each. LunarLander: 3 seeds (42, 0, 7), each 500\,K steps. \emph{Best train} is the mean of best 100-ep MA across seeds with 95\% percentile bootstrap CI (B$=$10$^{4}$); \emph{Final train} is mean$\pm$std of final 100-ep MA. Bold = mean best $\geq$ ``solved'' threshold (LunarLander only).}
+\label{tab:multiseed}
+\begin{tabular}{llccc}
+\toprule
+Task & Variant & Best train (mean, 95\% CI) & Final train (mean$\pm$std) & $n$ \\
+\midrule
+\multirow{3}{*}{Pong}
+  & Vanilla DQN & $-3.54$ [-12.96,\,9.66] & $-3.56\pm9.60$ & 3 \\
+  & Double DQN & $2.99$ [-5.61,\,8.21] & $2.76\pm5.97$ & 3 \\
+  & Dueling Double DQN & $5.62$ [4.63,\,6.82] & $5.58\pm0.90$ & 3 \\
+\midrule
+\multirow{2}{*}{LunarLander}
+  & \textbf{DQN (Double)} & $\mathbf{257.93}$ [253.95,\,260.05] & $250.42\pm8.73$ & 3 \\
+  & \textbf{DQN (Dueling Double)} & $\mathbf{263.18}$ [255.47,\,269.76] & $256.10\pm7.41$ & 3 \\
+\bottomrule
+\end{tabular}
+\end{table}

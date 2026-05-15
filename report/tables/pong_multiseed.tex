@@ -1,0 +1,13 @@
+\begin{table}[h]\centering\small
+\caption{Pong multi-seed summary. Seed~42 trained for 2\,M env steps; seed~0 for 1.5\,M (to fit our compute budget). Reported values are mean$\pm$std \emph{across seeds} of (a) the best 100-episode moving-average return during training and (b) the final 100-episode MA. $n$ is the number of seeds with $\geq 100$ completed episodes.}
+\label{tab:pong_multiseed}
+\begin{tabular}{lccccc}
+\toprule
+Variant & Best train (mean$\pm$std) & Final train (mean$\pm$std) & $n$ seeds \\
+\midrule
+Vanilla DQN & $-1.65\pm11.31$ & $-1.67\pm11.30$ & 2 \\
+Double DQN & $0.38\pm5.99$ & $0.17\pm5.78$ & 2 \\
+Dueling Double DQN & $6.12\pm0.71$ & $6.08\pm0.67$ & 2 \\
+\bottomrule
+\end{tabular}
+\end{table}

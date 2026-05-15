@@ -1,0 +1,32 @@
+# Training outputs (large; regenerate by re-running)
+results/
+
+# Training logs (verbose; not part of submission)
+logs/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# LaTeX build artefacts
+report/*.aux
+report/*.bbl
+report/*.blg
+report/*.fdb_latexmk
+report/*.fls
+report/*.log
+report/*.out
+report/*.synctex.gz
+report/*.toc
+
+# Local IDE / agent settings
+.[c]laude/
+
+# Original submitted artefacts (rebuilt from cleaned source in report/)
+313553058_AI_HW3.pdf
+313553058_AI_HW3.zip
+
+# OS / editor
+.DS_Store
+*.swp
+*.swo

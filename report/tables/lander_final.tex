@@ -1,0 +1,13 @@
+\begin{table}[h]\centering\small
+\caption{LunarLander: final greedy/deterministic evaluation. DQN runs are 100 greedy ($\varepsilon=0.01$) episodes from a 500\,K-step model; PPO is 30 deterministic episodes from a 250\,K-timestep model (longer SB3 runs crashed; see Discussion). Solved threshold is mean return $\geq 200$ (bold).}
+\label{tab:lander_final}
+\begin{tabular}{lrrrrrr}
+\toprule
+Algorithm & Mean & Std & Min & Max & $n$ & Best train (100-ep MA) \\
+\midrule
+DQN (Double) & 174.14 & 131.70 & -67.3 & 308.5 & 100 & 253.95 \\
+\textbf{DQN (Dueling Double)} & \textbf{248.50} & 71.87 & -115.1 & 308.7 & 100 & 269.76 \\
+PPO & 144.70 & 51.99 & 1.0 & 238.9 & 30 & 79.37 \\
+\bottomrule
+\end{tabular}
+\end{table}

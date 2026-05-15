@@ -1,0 +1,34 @@
+\begin{table}[h]\centering\small
+\caption{Key hyperparameters. DQN settings follow \citet{mnih2015human} with a slightly shorter exploration ramp and replay buffer to fit our compute budget. PPO settings follow the SB3 LunarLander tuning.}
+\label{tab:hyperparams}
+\begin{tabular}{lll}
+\toprule
+Hyperparameter & Pong DQN family & LunarLander DQN \\
+\midrule
+Total environment steps & 2{,}000{,}000 & 500{,}000 \\
+Optimizer & Adam ($\beta_1=0.9,\beta_2=0.999$) & Adam \\
+Learning rate & $1\!\times\!10^{-4}$ & $3\!\times\!10^{-4}$ \\
+Discount $\gamma$ & 0.99 & 0.99 \\
+Replay buffer size & 100{,}000 & 100{,}000 \\
+Batch size & 32 & 64 \\
+Learning starts at step & 50{,}000 & 5{,}000 \\
+Train freq (env steps) & 4 & 4 \\
+Target net sync (steps) & 1{,}000 & 1{,}000 \\
+Exploration $\varepsilon$ start $\to$ end & $1.0\to 0.01$ & $1.0\to 0.05$ \\
+Exploration linear-decay fraction & $0.10$ & $0.10$ \\
+Loss & Huber & Huber \\
+Gradient clipping & 10.0 & 10.0 \\
+\midrule
+\textbf{PPO (LunarLander)} & \multicolumn{2}{l}{}\\
+Parallel envs & \multicolumn{2}{l}{8} \\
+Rollout length & \multicolumn{2}{l}{1024 steps / env} \\
+Mini-batch size & \multicolumn{2}{l}{64} \\
+Update epochs & \multicolumn{2}{l}{4} \\
+GAE $\lambda$ & \multicolumn{2}{l}{0.98} \\
+$\gamma$ & \multicolumn{2}{l}{0.999} \\
+Entropy coefficient & \multicolumn{2}{l}{0.01} \\
+Clip $\epsilon$ & \multicolumn{2}{l}{0.2 (SB3 default)} \\
+Learning rate & \multicolumn{2}{l}{$3\!\times\!10^{-4}$} \\
+\bottomrule
+\end{tabular}
+\end{table}

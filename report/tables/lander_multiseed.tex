@@ -1,0 +1,12 @@
+\begin{table}[h]\centering\small
+\caption{LunarLander multi-seed summary (3 seeds per variant: 42, 0, 7). All runs use 500\,K env steps and identical hyperparameters. Solved threshold is mean return $\geq 200$.}
+\label{tab:lander_multiseed}
+\begin{tabular}{lccc}
+\toprule
+Algorithm & Best train (mean$\pm$std across seeds) & Final train (mean$\pm$std) & $n$ seeds \\
+\midrule
+\textbf{DQN (Double)} & $\mathbf{257.93\pm2.82}$ & $250.42\pm8.73$ & 3 \\
+\textbf{DQN (Dueling Double)} & $\mathbf{263.18\pm5.89}$ & $256.10\pm7.41$ & 3 \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,13 @@
+\begin{table}[h]\centering\small
+\caption{Pong: final greedy evaluation (100 episodes) and best 100-episode training-time average across DQN variants. All variants share identical hyperparameters, replay buffer, and seed.}
+\label{tab:pong_final}
+\begin{tabular}{lrrrrrr}
+\toprule
+Variant & Mean & Std & Min & Max & $n$ & Best train (100-ep MA) \\
+\midrule
+Vanilla DQN & 9.68 & 6.81 & -14.0 & 20.0 & 100 & 9.66 \\
+Double DQN & 2.24 & 6.92 & -13.0 & 19.0 & 100 & 6.37 \\
+Dueling Double DQN & 8.63 & 4.53 & -2.0 & 19.0 & 100 & 6.82 \\
+\bottomrule
+\end{tabular}
+\end{table}
